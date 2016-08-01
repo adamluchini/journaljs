@@ -1,19 +1,22 @@
-function Journal(title, body, vowels) {
+function Journal(title, body, vowels, constanants) {
   this.title = title;
   this.body = body;
-  this.vowels = "";
+  this.vowels = 0;
+  this.constanants = 0;
 }
 
-Journal.vowels = function Vowels (body) {
-  var letters = (body.split("")).toLowerCase();
-  var vowels = 0;
-
-  for (var i=0; i>=letter.length; i++) {
+Journal.prototype.numOfVowels = function (body) {
+  body = body.replace(/\s/g, "");
+  var letters = body.split("");
+  console.log(letters);
+  for (i=0; i<=letters.length; i++) {
     if (letters[i] === "a" || letters[i] === "e" || letters[i] === "i" || letters[i] === "o" || letters[i] === "u") {
-      vowels ++;
+      this.vowels ++;
+    } else {
+      this.constanants ++;
     }
   }
-  console.log(vowels);
-};
+  return this.vowels;
 
+};
 exports.journalModule = Journal;
